@@ -19,6 +19,11 @@
 " first clear any existing autocommands:
 autocmd!
 
+
+filetype off
+call pathogen#helptags()
+
+
 " * User Interface
 
 " have syntax highlighting in terminals which can display colours:
