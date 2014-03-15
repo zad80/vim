@@ -76,7 +76,7 @@ set backupdir=~/.vimbackups
 
 source $VIMRUNTIME/ftplugin/man.vim
 runtime macros/justify.vim
-set tags=./tags,./../tags,./../../tags,./../../../tags,tags,~/adb/yaps/,yaps/
+set tags=./tags,./../tags,./../../tags,./../../../tags,tags
 
 " * Text Formatting -- General
 
