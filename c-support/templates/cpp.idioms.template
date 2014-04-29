@@ -3,10 +3,10 @@
 //         Name:  |?FUNCTION_NAME|
 //  Description:  
 // =====================================================================================
-void<CURSOR>
-|FUNCTION_NAME| ( <+argument_list+> )
+void |FUNCTION_NAME| ( <+argument_list+> )
 {
 <SPLIT>	return <+return_value+>;
+<CURSOR>
 }		// -----  end of function |FUNCTION_NAME|  ----- 
 == Idioms.function-static == map:isf, shortcut:t  ==
 // ===  FUNCTION  ======================================================================

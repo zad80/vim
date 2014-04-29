@@ -1,39 +1,41 @@
 == Idioms.function == map:if, shortcut:f  ==
-/* 
+/*
  * ===  FUNCTION  ======================================================================
  *         Name:  |?FUNCTION_NAME|
- *  Description:  
+ *  Description:
  * =====================================================================================
  */
-void<CURSOR>
-|FUNCTION_NAME| ( <+argument_list+> )
+void |FUNCTION_NAME| ( <+argument_list+> )
 {
 <SPLIT>	return <+return_value+>;
 }		/* -----  end of function |FUNCTION_NAME|  ----- */
 == Idioms.function-static == map:isf, shortcut:t  ==
-/* 
+/*
  * ===  FUNCTION  ======================================================================
  *         Name:  |?FUNCTION_NAME|
- *  Description:  
+ *  Description:
  * =====================================================================================
  */
-static void<CURSOR>
-|FUNCTION_NAME| ( <+argument_list+> )
+static void |FUNCTION_NAME| ( <+argument_list+> )
 {
+<CURSOR>
 <SPLIT>	return <+return_value+>;
 }		/* -----  end of static function |FUNCTION_NAME|  ----- */
 == Idioms.main == map:im, shortcut:m  ==
 #include	<stdlib.h>
+#include	<unistd.h>
+#include	<string.h>
+#include	<stdio.h>
 
-/* 
+/*
  * ===  FUNCTION  ======================================================================
  *         Name:  main
- *  Description:  
+ *  Description:
  * =====================================================================================
  */
-int
-main ( int argc, char *argv[] )
-{<CURSOR>
+int main ( int argc, char *argv[] )
+{
+<CURSOR>
 <SPLIT>	return EXIT_SUCCESS;
 }				/* ----------  end of function main  ---------- */
 == Idioms.enum == map:ie, shortcut:e  ==
@@ -57,7 +59,8 @@ scanf ( "<CURSOR>", & );
 printf ( "<CURSOR>\n" );
 == Idioms.calloc == map:ica, shortcut:c  ==
 |?POINTER|	= calloc ( (size_t)(<CURSOR><+COUNT+>), sizeof(<+TYPE+>) );
-if ( |POINTER|==NULL ) {
+if ( |POINTER|==NULL )
+{
 	fprintf ( stderr, "\ndynamic memory allocation failed\n" );
 	exit (EXIT_FAILURE);
 }

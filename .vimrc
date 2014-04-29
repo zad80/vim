@@ -1,7 +1,7 @@
 " .vimrc
 "
 " (Cl) 27/o4/2oo5 by zad and others (Tentator, etc)
-" 
+"
 " This file contains no control codes and no `top bit set' characters above the
 " normal Ascii range, and all lines contain a maximum of 79 characters.  With a
 " bit of luck, this should make it resilient to being uploaded, downloaded,
@@ -91,8 +91,8 @@ set nowrap
 
 " For indentation purely with hard tabs, the principle is to set 'tabstop' and 'shiftwidth' to the same value,
 "  and to leave 'expandtab' at its default value ('noexpandtab'), and leave 'softtabstop' unset:
-set shiftwidth=8
-set tabstop=8
+set shiftwidth=4
+set tabstop=4
 
 set autoindent
 
@@ -130,7 +130,7 @@ augroup filetype
   autocmd BufNewFile,BufRead *.txt set filetype=human
 augroup END
 
-" 10t: Ritorna all'ultima posizione precedente di un file editato 
+" 10t: Ritorna all'ultima posizione precedente di un file editato
 autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
 
 " in human-language files, automatically format everything at 72 chars:
@@ -139,7 +139,7 @@ autocmd FileType mail,human set formatoptions+=t textwidth=72
 " for C-like programming, have automatic indentation:
 autocmd FileType c,cpp,slang set cindent
 " and extended ctag listing
-autocmd FileType c,cpp,slang set showfulltag 
+autocmd FileType c,cpp,slang set showfulltag
 " and set indent as folded elements for F1
 autocmd FileType c,cpp,slang set foldmethod=indent
 autocmd FileType c,cpp,slang set foldlevel=999
@@ -342,7 +342,7 @@ imap <S-F2> <C-O>\tl
 
 " <F3> search <S-F3> search next identifyer
 nmap <F3> /
-imap <F3> <C-O>/ 
+imap <F3> <C-O>/
 nmap <S-F3> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 imap <S-F3> <C-O>[I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 
@@ -398,7 +398,7 @@ imap <S-F12> <C-O><C-T>
 
 nmap ,t :!(cd %:p:h;ctags *)&<CR>
 nmap <S-F4> :!(cd %:p:h;ctags *)&<CR>
-imap <S-F4> <C-O>:!(cd %:p:h;ctags *)&<CR> 
+imap <S-F4> <C-O>:!(cd %:p:h;ctags *)&<CR>
 
 
 " * Keystrokes -- Insert Mode
@@ -479,27 +479,27 @@ inoremap <C-x><C-t>  <ESC>:!(scopaTutto .)<CR>i
 " In order to get this stuff working you need to download
 " http://sourceforge.net/project/showfiles.php?group_id=181103
 " extract the contents of the pacage into ~/.vim and restart vim
-" try to load a previously tag session 
+" try to load a previously tag session
 
 " To automatically close the fold for the inactive files/buffers and open only
 "the fold for the current buffer in the taglist window, set the
 "'Tlist_File_Fold_Auto_Close' variable to 1.
 let Tlist_File_Fold_Auto_Close= 1
-let Tlist_Compact_Format=1   
+let Tlist_Compact_Format=1
 let Tlist_Auto_Update =1
-" add recursively file 
+" add recursively file
 nnoremap <A-F9>  :TlistAddFilesRecursive ./<CR>
 inoremap <A-F9>  <ESC>:TlistAddFilesRecursive ./<CR>i
 " Open tag windows
 nnoremap <A-F10> :TlistOpen<CR>
 inoremap <A-F10> <ESC>:TlistOpen<CR>i
-" Toggle between open and close tag list for the current buffer 
+" Toggle between open and close tag list for the current buffer
 nnoremap <A-F11> :TlistToggle<CR>
 inoremap <A-F11> <ESC>:TlistToggle<CR>i
-" Load a tag list 
+" Load a tag list
 nnoremap <C-x><C-l> :TlistSessionLoad ./tagList<CR>
 inoremap <C-x><C-l> <ESC>:TlistSessionLoad ./tagList<CR>i
-" Save a tag list 
+" Save a tag list
 nnoremap <C-x><C-s> :TlistSessionSave ./tagList<CR>
 inoremap <C-x><C-s> <ESC>:TlistSessionSave ./tagList<CR>i
 " You can also use the ":TlistUpdate" command to update the tags for the
@@ -525,18 +525,41 @@ set completeopt=menuone,longest,preview
 " Neocomplete
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_disable_auto_complete = 1
-"inoremap <expr><TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>"
-inoremap <S-TAB>  <C-x><C-u>
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>"
+"inoremap <S-TAB>  <C-x><C-u>
 function! s:check_back_space()"{{{
 let col = col('.') - 1
 return !col || getline('.')[col - 1] =~ '\s'
-endfunction"}}
+endfunction"}}}
 " Popup color.
+" "guibg" is for gui "ctermbg" for the vim text version
+
 hi Pmenu ctermbg=green
 hi PmenuSel ctermbg=blue
 hi PmenuSbar ctermbg=0
 
-" Neocomplete end 
+"hi Normal guifg=Gray guibg=Black
+"hi Cursor guibg=White
+"hi lCursor guibg=White
+"hi Comment guifg=Cyan
+"hi Constant guifg=Magenta
+"hi Special guifg=Red
+"hi Identifier guifg=Cyan
+"hi Statement guifg=Yellow
+"hi PreProc guifg=Blue
+"hi Type guifg=Green
+"hi Underlined guifg=Blue
+"hi Todo guifg=Black
+
+
+
+" Neocomplete end
 set laststatus=2
+
+" To distinguish between warnings and errors for gcc messages, place sth. like this in your .vimrc:
+let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat
+
+" trim whitespace
+nnoremap \tws :%s/\s\+$//e<CR>
 
 " end of .vimrc

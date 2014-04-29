@@ -2,13 +2,13 @@
 §  User Macros
 § ==========================================================
 
-SetMacro( 'AUTHOR',      'e.placidi' )
+SetMacro( 'AUTHOR',      'zad' )
 SetMacro( 'AUTHORREF',   '' )
-SetMacro( 'COMPANY',     'Adb' )
+SetMacro( 'COMPANY',     'ZadCorp' )
 SetMacro( 'COPYRIGHT',   'Copyright (c) |YEAR|, |AUTHOR|' )
-SetMacro( 'EMAIL',       'e.placidi@ext.adbglobal.com' )
+SetMacro( 'EMAIL',       'zad360@gmail.com' )
 SetMacro( 'LICENSE',     'GNU General Public License' )
-SetMacro( 'ORGANIZATION','' )
+SetMacro( 'ORGANIZATION','me' )
 
 SetStyle( 'C' )
 
