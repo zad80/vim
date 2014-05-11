@@ -561,9 +561,6 @@ let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat
 " trim whitespace
 nnoremap \tws :%s/\s\+$//e<CR>
 
-" CCTree
-let g:CCTreeCscopeDb = "/usr/src/linux/ccglue.out"
-
 " insert mode mapping to move the cursor to the correct indentation position.
 imap <C-i>i <ESC>cc
 " end of .vimrc
