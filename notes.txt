@@ -1,0 +1,4 @@
+####### the TAB affair
+
+	With this configuration TAB isn't associated with the tab but with completition suggestion.
+	To insert a TAB use <CTL>-t.
