@@ -1,0 +1,50 @@
+#generate ctags for kernel sources
+find . -type f -iname "*.[chS]" | xargs ctags -a
+
+LNX=/usr/src/linux
+ARCH=i386
+    find  $LNX/                                                         \
+    -path "$LNX/arch/*" ! -path "$LNX/arch/$ARCH*" -prune -o               \
+    -path "$LNX/include/asm-*" ! -path "$LNX/include/asm-$ARCH*" -prune -o \
+    -path "$LNX/tmp*" -prune -o                                           \
+    -path "$LNX/Documentation*" -prune -o                                 \
+    -path "$LNX/scripts*" -prune -o                                       \
+    -path "$LNX/drivers*" -prune -o                                       \
+        -name "*.[chxsS]" -print | xargs ctags -a
+set tags=/my/dir1/tags,/my/dir2/tags
+
+
+#generate csope recursively
+cscope-indexer  -r
+
+#generate ccglue from cscope.out and tags
+ccglue -I
+
+Command line:
+$ ccglue -S cscope1.out,cscope2.out,...cscopeN.out -o cctree.out
+
+(If -o outputfilename is not specified, it will default to ccglue.out)
+
+In Vim:
+:CCTreeLoadXRefDBFromDisk cctree.out
+
+Once, the database is loaded for tracing, ccglue can be run independently externally, and everytime a new call-tree is constructed, it will be from the updated cctree.out file.
+
+
+# cscope for the kernel
+LNX=/usr/src/linux
+ARCH=i386
+    find  $LNX/                                                         \
+	-path "$LNX/arch/*" ! -path "$LNX/arch/$ARCH*" -prune -o               \
+	-path "$LNX/include/asm-*" ! -path "$LNX/include/asm-$ARCH*" -prune -o \
+	-path "$LNX/tmp*" -prune -o                                           \
+	-path "$LNX/Documentation*" -prune -o                                 \
+	-path "$LNX/scripts*" -prune -o                                       \
+	-path "$LNX/drivers*" -prune -o                                       \
+        -name "*.[chxsS]" -print > "$LNX/cscope.files"
+
+cscope -b -q -k
+ 
+The -b flag tells Cscope to just build the database, and not launch the Cscope GUI. The -q causes an additional, 'inverted index' file to be created, which makes searches run much faster for large databases. 
+Finally, -k sets Cscope's 'kernel' mode--it will not look in /usr/include for any header files that are #included in your source files (this is mainly useful
+when you are using Cscope with operating system and/or C library source code, as we are here).
