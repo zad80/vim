@@ -1,6 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/home/zad/necta/fsl-community-bsp/sources/meta-fsl-arm/conf/machine/include'
 let g:netrw_dirhist_2='/usr/src/linux-3.7.10-1.16/Documentation'
 let g:netrw_dirhist_3='/home/zad/.vim'
 let g:netrw_dirhist_4='/home/zad/sub20dev/bmp085'
+let g:netrw_dirhist_5='/home/zad/.vim'
+let g:netrw_dirhist_6='/home/zad/Dropbox/projects/ruby/gpioServer'

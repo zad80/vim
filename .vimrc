@@ -32,6 +32,11 @@ if has('syntax') && (&t_Co > 2)
 endif
 
 execute pathogen#infect()
+call pathogen#incubate()
+
+set nocompatible      " We're running Vim, not Vi!
+
+
 " have fifty lines of command-line (etc) history:
 set history=70
 " remember all of these between sessions, but only 10 search terms; also
@@ -85,16 +90,17 @@ set tags=./tags,./../tags,./../../tags,./../../../tags,tags
 set nowrap
 
 " use indents of 2 spaces, and have them copied down lines:
-"set shiftwidth=2
-"set shiftround
-"set expandtab
+set shiftwidth=2
+set shiftround
+set expandtab
 
 " For indentation purely with hard tabs, the principle is to set 'tabstop' and 'shiftwidth' to the same value,
 "  and to leave 'expandtab' at its default value ('noexpandtab'), and leave 'softtabstop' unset:
-set shiftwidth=4
-set tabstop=4
+"set shiftwidth=4
+"set tabstop=4
 
 set autoindent
+filetype indent on    " Enable filetype-specific indenting
 
 " normally don't automatically format `text' as it is typed, IE only do this
 " with comments, at 79 characters:
